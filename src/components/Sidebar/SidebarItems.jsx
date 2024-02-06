@@ -1,15 +1,20 @@
 import React from 'react'
-import HomePage from '../../pages/HomePage/HomePage'
+import Home from './Home'
+import Search from './Search'
+import Notification from './Notification'
+import CreatePost from './CreatePost'
+import ProfileLink from './ProfileLink'
+
 
 const SidebarItems = () => {
 
   return (
     <>
-        <HomePage/>
-        {/* <Search/>
+        <Home/>
+        <Search/>
         <Notification/>
         <CreatePost/>
-        <ProfileLink/> */}
+        <ProfileLink/>
     </>
   )
 }

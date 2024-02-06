@@ -13,7 +13,7 @@ const Sidebar = () => {
             <Link to="/" className="on-mobile-tablet" >
                 <InstagramMobileLogo />
             </Link>
-        <nav>
+        <nav className="sidebar-nav">
            <SidebarItems/>
         </nav>
         <div className="log-out-container">

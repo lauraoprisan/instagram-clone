@@ -2,11 +2,13 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    color:white;
 }
 
 button{
     background-color: transparent;
     border:none;
+    margin:auto 0;
 }
 
 .flex{
@@ -18,10 +20,10 @@ button{
 .outer-container{
     display:flex;
 }
+
 .main-content{
     flex:1;
-    height:5000px;
-    background-color: rgb(54, 54, 54);
+    background-color: rgb(0, 0, 0);
     color:white;
 }
 
@@ -154,7 +156,395 @@ span.flex-center{
     color:white;
     text-decoration: none;;
 }
+
+.sidebar-nav {
+    color:white;
+}
+
+.sidebar-nav a{
+    color:white;
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap:1rem;
+    padding:10px 0;
+}
+
 /* /sidebar*/
+
+/*avatar*/
+
+.avatar-container{
+    width:25px;
+    height:25px;
+}
+
+.avatar-sm{
+    width:25px;
+    height:25px;
+}
+
+.avatar-lg{
+    width:35px;
+    height:35px;
+}
+
+.avatar-xlg{
+    width:100px;
+    height:100px;
+}
+
+.avatar-container img{
+    width:25px;
+    height:25px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.avatar-lg img{
+    width:35px;
+    height:35px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.avatar-xlg img{
+    width:100px;
+    height:100px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* /avatar*/
+
+/* homepage*/
+.main-container{
+    padding: 5% 10%;
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5rem;
+    /* border:1px solid blue; */
+}
+
+.feeds-container{
+    flex:3;
+    /* border:1px solid red; */
+}
+
+.suggested-container{
+    flex:2;
+    /* border:1px solid green; */
+}
+
+.single-feedpost{
+    /* border:1px solid white; */
+    margin-bottom:20px;
+
+}
+
+.image-post-container{
+    max-width:100%;
+    /* background: white; this adds a few pixels below the image (the container is with 4px heigher than the img)*/
+    /* border:1px solid green; */
+}
+
+.image-post-container img{
+    width: 100%;
+}
+
+.feedpost-header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 0;
+}
+
+.suggested-current-user-data, .feedpost-user-data{
+   gap:1rem;
+}
+
+.subtle-text{
+    color:rgba(255, 255, 255, 0.5);
+}
+
+button,a {
+    cursor:pointer;
+}
+
+button, a{
+    color:rgb(36, 131, 239);
+    font-weight: 700;
+    transition:0.2s ease-in-out;
+    text-decoration: none;
+}
+
+button:hover, a:hover{
+    color:rgb(255, 255, 255);
+    font-weight: 700;
+}
+
+.feedpost-footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin:10px 0;
+    gap:0.4rem;
+}
+
+.interaction-post-icons{
+    gap:1rem;
+    margin:5px;
+}
+.feedpost-description{
+    gap:1rem;
+}
+
+.interaction-post-icons div{
+    cursor: pointer;
+}
+
+.number-of-likes, .view-comments{
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.view-comments{
+    margin:-3px 0;
+}
+
+.username{
+    font-weight: 700;
+}
+
+.create-comment-form{
+    justify-content: space-between;
+    margin:10px 0;
+    width:100%;
+    position:relative;
+}
+
+.create-comment-form input{
+    padding:0;
+    width:100%;
+    padding:10px 0;
+
+}
+
+.create-comment-form input:focus {
+    outline: none;
+    border-bottom:1px solid rgba(255, 255, 255, 0.313);
+    color:red;
+}
+
+.create-post-btn{
+    position:absolute;
+    right:0px;
+    bottom:9px;
+}
+
+.suggested-container{
+    flex-direction: column;
+}
+
+.suggested-users-header, .suggested-users-subtitle {
+    display:flex;
+    justify-content: space-between;
+    gap:1rem;
+
+
+}
+
+.suggested-users-header a{
+    margin:auto 0;
+}
+
+.suggested-users-subtitle{
+    font-size: 0.9rem;
+}
+
+.suggested-users-subtitle button{
+    color:rgba(255, 255, 255, 0.748);
+}
+
+.suggested-users-subtitle button:hover{
+    color:white;
+}
+
+.suggested-user{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:40px;
+    gap:1rem;
+    margin:10px 0;
+
+}
+
+.suggested-current-user-data{
+    height:30px;
+    gap:1rem;
+    margin:10px 0;
+}
+
+.suggested-user button{
+    margin-left:auto;
+}
+
+.suggested-user-info{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:100%;
+}
+
+.number-of-followers{
+    font-size: 0.8rem;
+}
+
+.copyright{
+    font-size: 0.7rem;
+    color:rgba(255, 255, 255, 0.706);
+}
+
+.copyright a{
+    color:rgba(255, 255, 255, 0.706);
+}
+
+.copyright a:hover{
+    color:white;
+}
+
+/* /homepage*/
+
+/* profile page*/
+
+.profile-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding:5% 10%;
+    gap:3rem;
+}
+
+.profile-header{
+    display:flex;
+    gap:2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-user-data{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap:0.5rem;
+}
+
+.profile-username-edit{
+    gap:2rem;
+}
+
+.edit-profile-btn{
+    background-color: white;
+    padding:5px 10px;
+    border-radius:5px;
+    color:black;
+}
+
+.edit-profile-btn:hover{
+    background-color: rgba(255, 255, 255, 0.779);
+    color:black;
+}
+
+.profile-numbers-data{
+    gap:1rem;
+}
+
+.profile-numbers-data > span {
+    color:rgba(255, 255, 255, 0.704);
+}
+
+.profile-main-content{
+    display:flex;
+    flex-direction: column;
+    gap:3rem;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+.tabs{
+    display:flex;
+    gap:2rem;
+}
+
+.tab{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:0.5rem;
+    padding-top:10px;
+    cursor:pointer;
+}
+
+.profile-icon{
+    font-size: 1.4rem;
+    display:flex;
+}
+
+.profile-posts{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:1rem;
+    column-gap: 1rem;
+}
+
+.profile-posts img{
+    width:20vw;
+    height:20vw;
+    object-fit: cover; /*this makes the image not shrinked*/
+
+}
+
+.profile-post-image-container{
+    position:relative;
+}
+
+.image-hover-layer{
+    position:absolute;
+    opacity:0;
+    background-color: rgba(0, 0, 0, 0.494);
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    gap:2rem;
+
+}
+
+.profile-post-image-container:hover .image-hover-layer{
+    opacity:1;
+    transition:all 0.3s ease;
+}
+
+.image-hover-layer div{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    gap:0.5rem;
+}
+
+/* /profile page*/
+
+/* next */
 
 .on-desktop{
     display:block;
@@ -162,6 +552,33 @@ span.flex-center{
 
 .on-mobile-tablet{
     display:none;
+}
+
+
+@media (min-width:768px) and (max-width:1121px){
+
+    .main-container{
+        padding:5% 7%;
+        gap:3rem;
+    }
+
+    .sidebar-container{
+        width:160px;
+    }
+}
+
+@media (min-width:768px) and (max-width:890px){
+    .created-at{
+        display:none;
+    }
+
+    .feedpost-user-data{
+        gap:0.5rem;
+    }
+
+    .main-container{
+        padding:5% 5%;
+    }
 }
 
 @media (max-width:768px){
@@ -187,5 +604,35 @@ span.flex-center{
     }
 
     /* /sidebar*/
+
+    /* profile page*/
+    .profile-header{
+        flex-direction:column;
+    }
+
+    .profile-container{
+        align-items: center;
+        padding:5% 5%;
+    }
+
+    .profile-posts{
+        grid-template-columns: repeat(1,1fr);
+        gap:0.5rem;
+    }
+
+    .profile-posts img{
+        width:60vw;
+        height:60vw;
+        object-fit: cover; /*this makes the image not shrinked*/
+    }
+
+    .profile-container{
+        gap:2rem;
+    }
+
+    .profile-main-content{
+        gap:2rem;
+    }
+    /* /profile page*/
 
 }
