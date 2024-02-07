@@ -10,7 +10,7 @@ const SuggestedUser = ({name, followers, avatar}) => {
 
     return (
         <div className="suggested-user">
-            <Avatar avatar={avatar} avatarSize="lg"/>
+            <Avatar avatar={avatar} size="lg"/>
             <div className="suggested-user-info">
                 <span className="username">{name}</span>
                 <span className="subtle-text number-of-followers">{followers} followers</span>
