@@ -1,7 +1,7 @@
 * {
     margin:0;
     padding:0;
-    box-sizing:border-box;
+    box-sizing:content-box;
     color:white;
 }
 
@@ -397,7 +397,7 @@ button:hover, a:hover{
     margin-left:auto;
 }
 
-.suggested-user-info{
+.suggested-user-info, .user-info{
     display:flex;
     flex-direction: column;
     justify-content: space-between;
@@ -533,6 +533,7 @@ button:hover, a:hover{
 .profile-post-image-container:hover .image-hover-layer{
     opacity:1;
     transition:all 0.3s ease;
+    z-index:1;
 }
 
 .image-hover-layer div{
@@ -541,6 +542,162 @@ button:hover, a:hover{
     align-items: center;
     gap:0.5rem;
 }
+
+/* modal */
+    .modal{
+        position:fixed;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        background-color:  #000000;
+        z-index:1000;
+    }
+
+    .overlay-outside-modal{
+        position:fixed;
+        top:0;
+        right:0;
+        left:0;
+        bottom:0;
+        background-color: rgba(0, 0, 0, 0.348);
+        z-index:10;
+    }
+
+    .wrapper-test{
+        z-index:1;
+        position:relative;
+    }
+
+    .modal-layout{
+        width:80vw;
+        height:80vh;
+    }
+
+    .modal-img-container, .modal-right-content{
+        height:100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex:1;
+
+    }
+
+    .modal-img-container img{
+        max-height:100%;
+        max-width:100%;
+    }
+
+    .modal-right-content{
+        padding:0 20px;
+        align-items: flex-start;
+        gap:1rem;
+    }
+
+    .modal-data{
+        display:flex;
+        flex-direction: column;
+        flex:1;
+        height:100%;
+        gap:1rem;
+
+    }
+
+    .modal-close-button{
+        width:50px;
+        margin:0;
+        height:60px;
+
+    }
+
+    .modal-header{
+        display:flex;
+        justify-content: flex-start;
+        align-items: center;
+        border-bottom:1px solid rgba(255, 255, 255, 0.22);
+        height:60px;
+    }
+
+    .modal-header .username{
+        padding-left:1rem;
+    }
+
+    .delete-post-button{
+        margin-left:auto;
+        padding:5px;
+        border-radius:4px;
+        cursor:pointer;
+    }
+
+    .delete-post-button:hover{
+        background-color: rgba(255, 255, 255, 0.164);
+    }
+
+    .delete-post-button:hover *{
+        color:red;
+    }
+
+    .comments{
+        display:flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        height:300px;
+        overflow-y:auto;
+        width:100%;
+
+    }
+
+    .profile-post-info{
+        display:flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        flex:1;
+    }
+
+    .comment-container{
+        gap:0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .date-of-post{
+        font-size: 0.8rem;
+    }
+
+    .comment-text{
+        align-self: flex-start;
+        margin-left:10px;
+        color:rgba(255, 255, 255, 0.711);
+    }
+
+    .user-info{
+        justify-content: flex-start;
+    }
+
+    .profile-post-footer{
+        margin-top:auto;
+        width:100%;
+        margin-bottom:10px;
+    }
+/* /modal*/
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#1e1e24;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#3f3f40;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#555;
+}
+
+
 
 /* /profile page*/
 
@@ -565,6 +722,51 @@ button:hover, a:hover{
     .sidebar-container{
         width:160px;
     }
+}
+
+@media(max-width:1000px){
+
+    .modal{
+        height:inherit;
+        width:inherit;
+        align-items:flex-start;
+        justify-content: flex-start;
+    }
+
+    .modal-data{
+        display:none;
+    }
+
+    .modal-right-content{
+        width:5px;
+    }
+
+    .modal-img-container{
+        flex:1;
+        align-items: flex-start;
+    }
+
+    .modal-right-content{
+        height:100%;
+        display:flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex:0;
+
+    }
+
+    .modal-img-container img{
+        height:80vh;
+        width:inherit;
+        max-height:fit-content;
+        max-width:fit-content
+    }
+
+    .modal-close-button{
+        padding-top:10px;
+        height:inherit;
+    }
+
 }
 
 @media (min-width:768px) and (max-width:890px){
@@ -633,6 +835,7 @@ button:hover, a:hover{
     .profile-main-content{
         gap:2rem;
     }
+
     /* /profile page*/
 
 }

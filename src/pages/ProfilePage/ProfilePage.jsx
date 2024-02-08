@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Avatar from '../../components/Avatar/Avatar'
 import {BsBookmark, BsGrid3X3, BsSuitHeart} from 'react-icons/bs'
 import ProfilePosts from './ProfilePosts'
+
 
 const ProfilePage = () => {
   return (
@@ -43,6 +44,7 @@ const ProfilePage = () => {
                     <span className="on-desktop">Likes</span>
                 </div>
             </div>
+
             <ProfilePosts/>
         </div>
     </div>
