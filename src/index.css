@@ -58,7 +58,7 @@ input {
     border-radius: 5px;
     padding:5px 60px;
     background-color: rgb(222, 255, 255);
-    width:100%;
+    width:30%;
     margin-top:20px;
 }
 
@@ -127,6 +127,25 @@ span.flex-center{
     justify-content: space-between;
 }
 
+.password-container{
+    position:relative;
+}
+
+.show-password-icon{
+    position:absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-45%);
+    text-align: center;
+}
+
+.sign-in-error{
+    color:red;
+}
+
+.loading-btn{
+    background-color: rgba(128, 128, 128, 0.474);
+}
 /* /auth page*/
 
 /*sidebar*/
