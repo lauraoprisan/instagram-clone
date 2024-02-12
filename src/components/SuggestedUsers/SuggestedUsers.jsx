@@ -2,19 +2,13 @@
 import { Link } from 'react-router-dom'
 import Avatar from '../Avatar/Avatar'
 import SuggestedUser from './SuggestedUser'
+import SuggestedHeader from './SuggestedHeader'
 
 const SuggestedUsers = () => {
+
   return (
     <>
-        <div className="suggested-users-header">
-            <div className="suggested-current-user-data flex">
-                <Avatar avatar="/images/profilepic.png" size="lg"/>
-                <span>username</span>
-            </div>
-            <Link to="/auth">
-                Log out
-            </Link>
-        </div>
+        <SuggestedHeader/>
         <div className="suggested-users-subtitle">
             <span>Suggested for you</span>
             <button>See all</button>

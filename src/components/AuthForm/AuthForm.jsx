@@ -23,7 +23,7 @@ const AuthForm = () => {
                     <span>OR</span>
                     <div className="horizontal-bar"></div>
                 </div>
-               <GoogleAuth/>
+               <GoogleAuth prefix={isLogin ? "Log in" : "Sign up"}/>
             </div>
             <div className="sign-up-container">
                 <span>

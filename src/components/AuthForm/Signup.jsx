@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import useSignUpWithEmailAndPassword from "../../hooks/useSignupWithEmailAndPassword";
+import useSignUpWithEmailAndPassword from "../../hooks/useSignUpWithEmailAndPassword";
 
 
 

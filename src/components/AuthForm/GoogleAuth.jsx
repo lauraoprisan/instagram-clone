@@ -1,11 +1,48 @@
-import React from 'react'
 
-const GoogleAuth = () => {
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { auth, firestore } from '../../firebase/firebase';
+import useAuthStore from '../../store/authStore';
+import { doc, setDoc } from 'firebase/firestore';
+
+const GoogleAuth = ({prefix}) => {
+  const [signInWithGoogle, , , error] = useSignInWithGoogle(auth);
+  const loginUser = useAuthStore(state=>state.login)
+
+  const handleGoogleAuth = async()=>{
+    try {
+      const newUser = await signInWithGoogle()
+      if(!newUser && error){
+        alert(error.message)
+        return
+      }
+
+      if(newUser){
+          const userDoc = {
+            uid :newUser.user.uid,
+            email:newUser.user.email,
+            username:newUser.user.email.split("@")[0],
+            fullname:newUser.user.displayName,
+            bio:"",
+            profilePicURL:newUser.user.photoURL,
+            followers:[],
+            following:[],
+            posts:[],
+            createdAt:Date.now(),
+        }
+        await setDoc(doc(firestore, "users", newUser.user.uid), userDoc); //this created a doc in firestore
+        localStorage.setItem("user-info", JSON.stringify(userDoc)) //saves it in local storage
+        loginUser(userDoc)
+      }
+    } catch (error) {
+        console.log(error.message)
+    }
+  }
+
   return (
     <>
-        <button className="google-login-btn flex">
+        <button className="google-login-btn flex" onClick={handleGoogleAuth}>
             <img className="google-icon" src="/images/google.png" alt="Google Icon" />
-            <span>Log in with Google</span>
+            <span>{prefix} with Google</span>
         </button>
     </>
   )
