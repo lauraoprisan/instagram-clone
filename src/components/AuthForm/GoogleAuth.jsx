@@ -2,7 +2,7 @@
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { auth, firestore } from '../../firebase/firebase';
 import useAuthStore from '../../store/authStore';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const GoogleAuth = ({prefix}) => {
   const [signInWithGoogle, , , error] = useSignInWithGoogle(auth);
@@ -16,19 +16,30 @@ const GoogleAuth = ({prefix}) => {
         return
       }
 
-      if(newUser){
-          const userDoc = {
-            uid :newUser.user.uid,
-            email:newUser.user.email,
-            username:newUser.user.email.split("@")[0],
-            fullname:newUser.user.displayName,
-            bio:"",
-            profilePicURL:newUser.user.photoURL,
-            followers:[],
-            following:[],
-            posts:[],
-            createdAt:Date.now(),
-        }
+      const userRef = doc(firestore, "users", newUser.user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if(userSnap.exists()){
+          //login
+          const userDoc = userSnap.data()
+          localStorage.setItem("user-info", JSON.stringify(userDoc))
+          loginUser(userDoc)
+
+      } else{
+        //signup
+        const userDoc = {
+          uid :newUser.user.uid,
+          email:newUser.user.email,
+          username:newUser.user.email.split("@")[0],
+          fullname:newUser.user.displayName,
+          bio:"",
+          profilePicURL:newUser.user.photoURL,
+          followers:[],
+          following:[],
+          posts:[],
+          createdAt:Date.now(),
+         }
+
         await setDoc(doc(firestore, "users", newUser.user.uid), userDoc); //this created a doc in firestore
         localStorage.setItem("user-info", JSON.stringify(userDoc)) //saves it in local storage
         loginUser(userDoc)

@@ -448,7 +448,13 @@ button:hover, a:hover{
 /* /homepage*/
 
 /* profile page*/
-
+.user-not-found{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top:50px;
+}
 .profile-container{
     display:flex;
     flex-direction: column;
@@ -477,16 +483,25 @@ button:hover, a:hover{
     gap:2rem;
 }
 
-.edit-profile-btn{
+.edit-profile-btn, .follow-profile-btn{
     background-color: white;
     padding:5px 10px;
     border-radius:5px;
     color:black;
 }
 
+.follow-profile-btn{
+    background-color:rgb(36, 114, 216);
+    color:white;
+}
+
 .edit-profile-btn:hover{
     background-color: rgba(255, 255, 255, 0.779);
     color:black;
+}
+
+.follow-profile-btn:hover{
+    background-color:rgba(36, 114, 216, 0.797);
 }
 
 .profile-numbers-data{
@@ -495,6 +510,10 @@ button:hover, a:hover{
 
 .profile-numbers-data > span {
     color:rgba(255, 255, 255, 0.704);
+}
+
+.bio{
+    font-size: 0.85rem;
 }
 
 .profile-main-content{
@@ -721,7 +740,108 @@ button:hover, a:hover{
     background:#555;
 }
 
+.modal-for-editProfile-container{
+    display:flex;
+    flex-direction: row;
+    border:1px solid rgb(255, 255, 255);
+    padding:20px 30px;
+    width:100%;
+}
 
+.edit-mode{
+    width:70%;
+    max-width:500px;
+    height:inherit;
+}
+
+.close-edit{
+    align-self: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:50px;
+}
+
+.edit-profile-modal-content{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+
+    flex:1;
+    padding-left:30px;
+    padding-top:60px;
+    gap:1rem;
+}
+
+.edit-profile-modal-content h1{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.user-snippet{
+    gap:2rem;
+    align-self: flex-start;
+}
+
+.user-snippet button{
+    color:rgb(255, 255, 255);
+    padding:10px;
+    /* min-width:170px; */
+    background-color: rgba(255, 255, 255, 0.09);
+    border-radius:5px;
+    font-size: 0.9rem;
+}
+
+.user-snippet button:hover{
+    background-color: rgba(255, 255, 255, 0.266);
+}
+
+
+.edit-profile-form > div{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom:15px;
+    gap:0.5rem;
+    width:100%;
+}
+
+.edit-profile-form input{
+    border:1px solid rgba(255, 255, 255, 0.339);
+    border-left:none;
+    border-right:none;
+    padding:3px;
+    width:100%;
+}
+
+div.edit-form-buttons-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.edit-form-buttons-container button{
+    padding:5px 20px;
+    border-radius: 5px;
+    color:white;
+    width:120px;
+    margin-top:50px;
+
+}
+
+.edit-form-buttons-container button:hover{
+    opacity: 0.8;
+}
+
+.cancel-edit{
+    background-color: rgb(252, 105, 105);
+}
+
+.save-edit{
+    background-color: rgb(77, 121, 253);
+}
 
 /* /profile page*/
 
@@ -806,6 +926,12 @@ button:hover, a:hover{
         width:inherit;
         align-items:flex-start;
         justify-content: flex-start;
+    }
+
+    .edit-mode{
+        width:70%;;
+        align-items:center;
+        justify-content: center;
     }
 
     .modal-data{
@@ -911,6 +1037,22 @@ button:hover, a:hover{
         gap:2rem;
     }
 
+    .edit-form-buttons-container button{
+        width:50%;
+        font-size: 0.8rem;
+        padding:5px 10px;
+    }
+
+
+
+    .user-snippet{
+        flex-direction: column;
+        align-self: center;
+        gap:0.5rem;
+    }
+    .modal-for-editProfile-container{
+        padding:20px 10px;
+    }
     /* /profile page*/
 
 }

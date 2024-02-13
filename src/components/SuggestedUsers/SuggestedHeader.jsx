@@ -14,7 +14,7 @@ const SuggestedHeader = () => {
         <div className="suggested-users-header">
             <div className="suggested-current-user-data flex">
                 <Link to={`${authUser.username}`}>
-                    <Avatar avatar="/images/profilepic.png" size="lg"/>
+                    <Avatar avatar={authUser.profilePicURL} size="lg"/>
                 </Link>
                 <Link to={`${authUser.username}`}>
                     <span>{authUser.username}</span>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Loading from '../../components/Loading/Loading'
+import Loading from '../Loading/Loading'
 import ProfilePost from './ProfilePost'
 
 const ProfilePosts = () => {

@@ -1,28 +1,26 @@
 import React, { useState } from 'react'
-import Avatar from '../../components/Avatar/Avatar'
 import {BsBookmark, BsGrid3X3, BsSuitHeart} from 'react-icons/bs'
-import ProfilePosts from './ProfilePosts'
+import ProfilePosts from '../../components/Profile/ProfilePosts'
+import useGetUserProfileByUsername from '../../hooks/useGetUserProfileByUsername'
+import { Link, useParams } from "react-router-dom"
+import ProfileHeader from '../../components/Profile/ProfileHeader'
+import { Flex, Skeleton, SkeletonCircle, VStack } from '@chakra-ui/react'
+
 
 
 const ProfilePage = () => {
+
+    const {username} = useParams()
+    const {isLoading, userProfile}= useGetUserProfileByUsername(username)
+
+    const userNotFound = !isLoading && !userProfile
+
+    if(userNotFound) return <UserNotFound/>
+
   return (
     <div className="profile-container">
-        <div className="profile-header">
-            <Avatar avatar="/images/profilepic.png" size="xlg"/>
-            <div className="profile-user-data">
-                <div className="flex profile-username-edit">
-                    <span>username</span>
-                    <button className="edit-profile-btn">Edit profile</button>
-                </div>
-                <div className="flex profile-numbers-data">
-                    <span><span className="profile-numbers">4</span> Posts</span>
-                    <span><span className="profile-numbers">154</span> Followers</span>
-                    <span><span className="profile-numbers">456</span> Following</span>
-                </div>
-                <span className="username">Username</span>
-                <p>Some description text here for all to see</p>
-            </div>
-        </div>
+        {!isLoading && userProfile && <ProfileHeader/>}
+        {isLoading && <ProfileHeaderSkeleton />}
         <div className="profile-main-content">
             <div className="tabs">
                 <div className="tab">
@@ -52,3 +50,34 @@ const ProfilePage = () => {
 }
 
 export default ProfilePage
+
+const UserNotFound = ()=>{
+    return (
+        <div className="user-not-found">
+            <span>User not found</span>
+            <Link to="/">
+                <button>Go Home</button>
+            </Link>
+        </div>
+
+    )
+}
+
+const ProfileHeaderSkeleton = () => {
+	return (
+		<Flex
+			gap={{ base: 4, sm: 10 }}
+			py={10}
+			direction={{ base: "column", sm: "row" }}
+			justifyContent={"center"}
+			alignItems={"center"}
+		>
+			<SkeletonCircle size='24' />
+
+			<VStack alignItems={{ base: "center", sm: "flex-start" }} gap={2} mx={"auto"} flex={1}>
+				<Skeleton height='12px' width='150px' />
+				<Skeleton height='12px' width='100px' />
+			</VStack>
+		</Flex>
+	);
+};
