@@ -10,7 +10,7 @@ const Signup = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [inputs, setInputs] = useState({
         email: "",
-        fullname:"",
+        fullName:"",
         username:"",
         password: "",
     })
@@ -31,7 +31,7 @@ const Signup = () => {
             <input
                 type="text"
                 placeholder="Full Name"
-                onChange={(e)=> setInputs({...inputs, fullname:e.target.value})}
+                onChange={(e)=> setInputs({...inputs, fullName:e.target.value})}
             />
             <div className="password-container">
                 <input

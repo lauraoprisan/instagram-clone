@@ -31,7 +31,7 @@ const GoogleAuth = ({prefix}) => {
           uid :newUser.user.uid,
           email:newUser.user.email,
           username:newUser.user.email.split("@")[0],
-          fullname:newUser.user.displayName,
+          fullName:newUser.user.displayName,
           bio:"",
           profilePicURL:newUser.user.photoURL,
           followers:[],

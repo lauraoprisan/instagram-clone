@@ -11,7 +11,7 @@ const useSignUpWithEmailAndPassword = () => {
 
     const signup = async(inputs)=>{
 
-        if(!inputs.email || !inputs.password || !inputs.username || !inputs.fullname){
+        if(!inputs.email || !inputs.password || !inputs.username || !inputs.fullName){
             console.log("Please fill in all the fields!")
             return
         }
@@ -38,7 +38,7 @@ const useSignUpWithEmailAndPassword = () => {
                     uid :newUser.user.uid,
                     email:inputs.email,
                     username:inputs.username,
-                    fullname:inputs.fullname,
+                    fullName:inputs.fullName,
                     bio:"",
                     profilePicURL:"",
                     followers:[],

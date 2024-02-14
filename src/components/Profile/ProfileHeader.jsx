@@ -39,7 +39,7 @@ const ProfileHeader = () => {
                 <span><span className="profile-numbers">{userProfile.followers.length}</span> Followers</span>
                 <span><span className="profile-numbers">{userProfile.following.length}</span> Following</span>
             </div>
-            <span className="username">{userProfile.username}</span>
+            <span className="username">{userProfile.fullName}</span>
             <p className="bio" >{userProfile.bio}</p>
         </div>
         {isOpen && <EditProfile open={isOpen} onClose={()=>setIsOpen(false)}/>}

@@ -6,7 +6,7 @@ import { IoClose } from "react-icons/io5";
 const Modal = ({open,children, onClose, img, forComponent}) => {
 
     if(!open) return null
-    console.log(children)
+    
     return ReactDom.createPortal (
         <>
             <div className="overlay-outside-modal"></div>
