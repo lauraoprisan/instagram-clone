@@ -3,23 +3,28 @@ import useUserProfileStore from "../../store/userProfileStore"
 import useAuthStore from "../../store/authStore"
 import { useState } from 'react'
 import EditProfile from './EditProfile'
+import useFollowUser from '../../hooks/useFollowUser'
 
 
 const ProfileHeader = () => {
 
     const {userProfile}= useUserProfileStore()
-    const authUser = useAuthStore(state=>state.user)
-    const visitingOwnProfile = authUser && authUser.username === userProfile.username
-    const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile.username
+    const authUser = useAuthStore((state) => state.user);
     const [isOpen, setIsOpen] = useState(false)
+    const {isFollowing, isUpdating, handleFollowUser} = useFollowUser(userProfile?.uid) // ? is put there in case the userProfile is null
 
+    const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username;
+	const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile.username;
+
+    console.log("visitingOwnProfileAndAuth", visitingOwnProfileAndAuth)
+    console.log("visitingAnotherProfileAndAuth", visitingAnotherProfileAndAuth)
 
   return (
      <div className="profile-header">
 
         <Avatar avatar={userProfile.profilePicURL} size="xlg"/>
         <div className="profile-user-data">
-            {visitingOwnProfile && (
+            {visitingOwnProfileAndAuth && (
                 <div className="flex profile-username-edit">
                     <span>{userProfile.username}</span>
                     <button className="edit-profile-btn" onClick={()=>setIsOpen(true)}>Edit profile</button>
@@ -29,7 +34,9 @@ const ProfileHeader = () => {
             {visitingAnotherProfileAndAuth && (
                 <div className="flex profile-username-edit">
                     <span>{userProfile.username}</span>
-                    <button className="follow-profile-btn">Follow</button>
+                    <button className="follow-profile-btn" onClick={handleFollowUser}>
+                        {isFollowing ? "Unfollow":"Follow"}
+                    </button>
                 </div>
             )}
 
