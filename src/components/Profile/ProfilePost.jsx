@@ -6,36 +6,42 @@ import Modal from '../Modal/Modal'
 import Avatar from '../Avatar/Avatar'
 import Comment from '../Comment/Comment'
 import PostFooter from '../FeedPosts/PostFooter'
+import useUserProfileStore from '../../store/userProfileStore'
+import useAuthStore from '../../store/authStore'
 
-const ProfilePost = ({img}) => {
+const ProfilePost = ({post}) => {
 
     const [isOpen, setIsOpen] = useState(false)
+    const userProfile = useUserProfileStore(state=>state.userProfile)
+    const authUser = useAuthStore(state=>state.user)
 
 
   return (
     <div className="wrapper-test">
         <div  className="profile-post-image-container" onClick={()=> setIsOpen(true)}>
-            <img src={img} alt="" />
+            <img src={post.imageURL} alt="" />
             <div className="image-hover-layer flex">
                 <div>
                     <AiFillHeart/>
-                    <span>7</span>
+                    <span>{post.likes.length}</span>
                 </div>
                 <div>
                     <FaComment/>
-                    <span>7</span>
+                    <span>{post.comments.length}</span>
                 </div>
 
             </div>
         </div>
-        <Modal open={isOpen} onClose={()=> setIsOpen(false)} img={'/images/img1.png'} forComponent="profilePost">
+        <Modal open={isOpen} onClose={()=> setIsOpen(false)} img={post.imageURL} forComponent="profilePost">
             <div className="modal-header">
-                <Avatar size="sm" avatar="/images/profilepic.png"/>
-                <span className="username">username</span>
+                <Avatar size="sm" avatar={userProfile.profilePicURL}/>
+                <span className="username">{userProfile.username}</span>
 
-                <span className="delete-post-button">
+               {authUser?.uid === userProfile.uid &&(
+                 <span className="delete-post-button">
                     <MdDelete size="20"/>
-                </span>
+                 </span>
+               )}
             </div>
             <div className="profile-post-info">
                 <div className="comments">
@@ -51,76 +57,6 @@ const ProfilePost = ({img}) => {
                         profilePic="/images/profilepic.png"
                         text={`Dummy comment text`}
                     />
-                    <Comment
-                        createdAt="1d ago"
-                        username="username272"
-                        profilePic="/images/profilepic.png"
-                        text={`Dummy comment text`}
-                    />
-                    <Comment
-                        createdAt="1d ago"
-                        username="username272"
-                        profilePic="/images/profilepic.png"
-                        text={`Dummy comment text`}
-                    />
-                    <Comment
-                        createdAt="1d ago"
-                        username="username272"
-                        profilePic="/images/profilepic.png"
-                        text={`Dummy comment text`}
-                    />
-                    <Comment
-                        createdAt="1d ago"
-                        username="username272"
-                        profilePic="/images/profilepic.png"
-                        text={`Dummy comment text`}
-                    />
-                    <Comment
-                        createdAt="1d ago"
-                        username="username272"
-                        profilePic="/images/profilepic.png"
-                        text={`Dummy comment text`}
-                    />
-                    <Comment
-                        createdAt="1d ago"
-                        username="username272"
-                        profilePic="/images/profilepic.png"
-                        text={`Dummy comment text`}
-                    />
-                    <Comment
-                        createdAt="1d ago"
-                        username="username272"
-                        profilePic="/images/profilepic.png"
-                        text={`Dummy comment text`}
-                    />
-                    <Comment
-                        createdAt="1d ago"
-                        username="username272"
-                        profilePic="/images/profilepic.png"
-                        text={`Dummy comment text`}
-                    />
-                    <Comment
-                        createdAt="1d ago"
-                        username="username272"
-                        profilePic="/images/profilepic.png"
-                        text={`Dummy comment text`}
-                    />
-                    <Comment
-                        createdAt="1d ago"
-                        username="username272"
-                        profilePic="/images/profilepic.png"
-                        text={`Dummy comment text`}
-                    />
-                    <Comment
-                        createdAt="1d ago"
-                        username="username272"
-                        profilePic="/images/profilepic.png"
-                        text={`Dummy comment text`}
-                    />
-
-
-
-
                 </div>
                 <div className="profile-post-footer">
                     <PostFooter username="username272" isProfilePage={true}/>

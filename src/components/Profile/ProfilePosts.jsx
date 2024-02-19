@@ -1,29 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import Loading from '../Loading/Loading'
 import ProfilePost from './ProfilePost'
+import useGetUserPosts from '../../hooks/useGetUserPosts';
 
 const ProfilePosts = () => {
 
-    const [isLoading, setIsLoading] = useState(true)
+    const { isLoading, posts } = useGetUserPosts();
 
-    useEffect(()=>{
-        setTimeout(()=>{
-            setIsLoading(false)
-        }, 2000)
-    },[])
+	const noPostsFound = !isLoading && posts.length === 0;
+	if (noPostsFound) return <NoPostsFound />;
 
     return (
         <>
 
         <div className="profile-posts">
-            {isLoading ? <Loading/> : (
-                <>
-                    <ProfilePost img="/images/img1.png"/>
-                    <ProfilePost img="/images/img2.png"/>
-                    <ProfilePost img="/images/img3.png"/>
-                    <ProfilePost img="/images/img4.png"/>
-                </>
-            )}
+            {isLoading &&<Loading/>}
+
+            {!isLoading && (
+				<>
+					{posts.map((post) => (
+						<ProfilePost post={post} key={post.id} />
+					))}
+				</>
+			)}
         </div>
 
         </>
@@ -34,3 +33,11 @@ const ProfilePosts = () => {
 }
 
 export default ProfilePosts
+
+const NoPostsFound = () => {
+	return (
+		<div>
+            No posts found
+        </div>
+	);
+};

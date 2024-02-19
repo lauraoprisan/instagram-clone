@@ -10,10 +10,10 @@ const Modal = ({open,children, onClose, img, forComponent}) => {
     return ReactDom.createPortal (
         <>
             <div className="overlay-outside-modal"></div>
-            <div className={forComponent == "editProfile" ? "modal flex modal-layout edit-mode":"modal flex modal-layout"}>
+            <div className={forComponent == "editProfile" ? "modal flex edit-mode modal-layout":"modal flex modal-layout "}>
 
             {forComponent == "searchUser" && (
-                <div className="modal-for-editProfile-container search-user-modal">
+                <div className=" search-user-modal">
                     {children}
                     <button className="modal-close-button close-edit" onClick={onClose}>
                             <IoClose size={20}/>
@@ -31,7 +31,7 @@ const Modal = ({open,children, onClose, img, forComponent}) => {
             )}
 
             {forComponent == "profilePost" && (
-                <>
+                <div className=" flex modal-layout">
                     <div className="modal-img-container">
                         <img  src={img} alt="" />
                     </div>
@@ -43,7 +43,7 @@ const Modal = ({open,children, onClose, img, forComponent}) => {
                             <IoClose size={20}/>
                         </button>
                     </div>
-                </>
+                </div>
             )}
 
             </div>

@@ -19,11 +19,11 @@ const Search = () => {
 
   return (
     <>
-        <Link to="/ " onClick={()=>setIsOpen(true)}>
+        <div className="sidebar-item" onClick={()=>setIsOpen(true)}>
           <SearchLogo />
           <span className="on-desktop">Search</span>
-        </Link>
-        <Modal open={isOpen} onClose={()=>setIsOpen(false)} forComponent="searchUser">
+        </div>
+        <Modal open={isOpen} onClose={()=>setIsOpen(false) } forComponent="searchUser">
           <div className="search-user-modal-container">
             <h3>Search user</h3>
             <form onSubmit={handleSearchUser} className="search-user-form">

@@ -13,10 +13,13 @@ const SuggestedUsers = () => {
   return (
     <>
         <SuggestedHeader/>
-        <div className="suggested-users-subtitle">
-            <span>Suggested for you</span>
-            <button>See all</button>
-        </div>
+        {suggestedUsers.length !== 0 &&(
+          <div className="suggested-users-subtitle">
+              <span>Suggested for you</span>
+              <button>See all</button>
+          </div>
+        )}
+
         {suggestedUsers.map(user=>(
           <SuggestedUser user={user} key={user.id}/>
         ))}

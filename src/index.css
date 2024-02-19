@@ -171,6 +171,13 @@ span.flex-center{
 
 }
 
+.sidebar-item{
+    display:flex;
+    gap:1rem;
+    padding:10px 0;
+    font-weight: 700;
+}
+
 .log-out-container{
     margin-top:auto;
 }
@@ -381,7 +388,6 @@ button:hover, a:hover{
     justify-content: space-between;
     gap:1rem;
 
-
 }
 
 .suggested-users-header a{
@@ -390,6 +396,7 @@ button:hover, a:hover{
 
 .suggested-users-subtitle{
     font-size: 0.9rem;
+    margin-top:20px;
 }
 
 .suggested-users-subtitle button{
@@ -924,6 +931,36 @@ div.edit-form-buttons-container{
 
 
 /* /non authentificated*/
+
+/* create a post*/
+.search-user-modal{
+    width:100%;
+    padding:20px;
+}
+
+.img-preview-container-icon{
+    position: relative;
+
+}
+
+.img-preview-container img{
+    margin:20px 0;
+    max-height:300px;
+}
+
+.img-preview-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cancel-img{
+    position: absolute;
+    top:5px;
+    right:0;
+}
+/* /create a post*/
+
 /* next */
 
 .on-desktop{
@@ -985,8 +1022,8 @@ div.edit-form-buttons-container{
     }
 
     .modal-img-container img{
-        height:80vh;
-        width:inherit;
+        
+        width:100%;
         max-height:fit-content;
         max-width:fit-content
     }

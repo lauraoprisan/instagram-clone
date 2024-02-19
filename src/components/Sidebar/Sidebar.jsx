@@ -17,7 +17,7 @@ const Sidebar = () => {
                     <InstagramMobileLogo />
                 </Link>
             <nav className="sidebar-nav">
-            <SidebarItems/>
+                <SidebarItems/>
             </nav>
             <div className="log-out-container" onClick={handleLogout}>
                 <div className="log-out-link flex">
