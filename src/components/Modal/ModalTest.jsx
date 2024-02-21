@@ -1,0 +1,29 @@
+import React from 'react'
+import ReactDom from'react-dom'
+import { IoClose } from "react-icons/io5";
+
+
+const ModalTest = ({isOpen, onClose, children}) => {
+
+    if(!isOpen) return null
+
+    return ReactDom.createPortal (
+        <>
+            <div className="overlay-outside-modal">
+            </div>
+            <div className="modal-test">
+                {children}
+                <button
+                    className="modal-close-button-test"
+                    onClick={onClose}
+                >
+                    <IoClose size={20}/>
+                </button>
+            </div>
+        </>,
+        document.getElementById('portal')
+
+    )
+}
+
+export default ModalTest

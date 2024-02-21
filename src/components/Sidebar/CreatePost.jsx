@@ -8,7 +8,7 @@ import useShowToast from '../../hooks/useShowToast';
 import { addDoc, arrayUnion, collection, doc, updateDoc } from 'firebase/firestore';
 import { firestore, storage } from '../../firebase/firebase';
 import { getDownloadURL, ref, uploadString } from 'firebase/storage';
-import usePostStore from '../../store/usePostStore';
+import usePostStore from '../../store/postStore';
 import useAuthStore from '../../store/authStore';
 import useUserProfileStore from '../../store/userProfileStore';
 import { useLocation } from "react-router-dom";

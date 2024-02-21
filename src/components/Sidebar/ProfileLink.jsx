@@ -7,8 +7,8 @@ const ProfileLink = () => {
   const authUser = useAuthStore(state=>state.user)
   console.log("authUser from profile link", authUser)
   return (
-    <Link to="/ ">
-        <Avatar avatar={authUser.profilePicURL} size="sm"/>
+    <Link to={`/${authUser?.username}`}>
+        <Avatar avatar={authUser?.profilePicURL} size="sm"/>
         <span className="on-desktop">Profile</span>
     </Link>
   )

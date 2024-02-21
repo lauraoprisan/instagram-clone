@@ -20,10 +20,13 @@ const Sidebar = () => {
                 <SidebarItems/>
             </nav>
             <div className="log-out-container" onClick={handleLogout}>
-                <div className="log-out-link flex">
-                    <BiLogOut color="white" size="22px" />
-                    <button className="on-desktop logout-btn">Log out</button>
-                </div>
+                <Link to="/auth">
+                    <div className="log-out-link flex">
+                        <BiLogOut color="white" size="22px" />
+                        <button className="on-desktop logout-btn">Log out</button>
+                    </div>
+                </Link>
+
             </div>
         </div>
     )

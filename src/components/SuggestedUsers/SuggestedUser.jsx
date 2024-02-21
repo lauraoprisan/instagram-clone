@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Avatar from '../Avatar/Avatar'
 import useAuthStore from '../../store/authStore'
 import useFollowUser from '../../hooks/useFollowUser'
+import { Link } from 'react-router-dom'
 
 const SuggestedUser = ({user, setUser}) => {
     const {isFollowing, isUpdating, handleFollowUser} = useFollowUser(user.uid)
@@ -17,9 +18,14 @@ const SuggestedUser = ({user, setUser}) => {
 
     return (
         <div className="suggested-user">
-            <Avatar avatar={user.profilePicURL} size="lg"/>
+            <Link to={`/${user.username}`}>
+                <Avatar avatar={user.profilePicURL} size="lg"/>
+            </Link>
+
             <div className="suggested-user-info">
-                <span className="username">{user.username}</span>
+                <Link to={`/${user.username}`}>
+                    <span className="username">{user.username}</span>
+                </Link>
                 <span className="subtle-text number-of-followers">{user.followers.length} followers</span>
             </div>
             {authUser.uid !== user.uid && (

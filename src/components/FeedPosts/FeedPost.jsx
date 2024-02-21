@@ -1,28 +1,22 @@
-import React, { useState } from 'react'
-import Avatar from '../Avatar/Avatar'
+import { useState } from 'react'
+import PostHeader from './PostHeader';
 import PostFooter from './PostFooter';
+import useGetUserProfileById from '../../hooks/useGetUserProfileById'
+import Loading from '../Loading/Loading';
 
-const FeedPost = ({img, username, avatar, avatarSize}) => {
+const FeedPost = ({post}) => {
 
+   const { userProfile} = useGetUserProfileById(post.createdBy)
 
-  return (
-    <div className="single-feedpost">
-        <div className="feedpost-header">
-            <div className="feedpost-user-data flex">
-                <Avatar avatar={avatar} size={avatarSize}/>
-                <span>{username}</span>
-                <span className="subtle-text created-at">• 1w</span>
+    return (
+        <div className="single-feedpost">
+            <PostHeader post={post} creatorProfile={userProfile}/>
+            <div className="image-post-container">
+                <img src={post.imageURL} alt="feed post image" />
             </div>
-            <button className="follow-post-btn">
-                Unfollow
-            </button>
+            <PostFooter post={post} creatorProfile={userProfile}/>
         </div>
-        <div className="image-post-container">
-            <img src={img} alt="" />
-        </div>
-        <PostFooter/>
-    </div>
-  )
+    )
 }
 
 export default FeedPost
