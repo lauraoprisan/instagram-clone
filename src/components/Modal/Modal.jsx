@@ -30,21 +30,7 @@ const Modal = ({open,children, onClose, img, forComponent}) => {
                 </div>
             )}
 
-            {forComponent == "profilePost" && (
-                <div className=" flex modal-layout">
-                    <div className="modal-img-container">
-                        <img  src={img} alt="" />
-                    </div>
-                    <div className="modal-right-content">
-                        <div className="modal-data">
-                            {children}
-                        </div>
-                        <button className="modal-close-button" onClick={onClose}>
-                            <IoClose size={20}/>
-                        </button>
-                    </div>
-                </div>
-            )}
+
 
             </div>
         </>,

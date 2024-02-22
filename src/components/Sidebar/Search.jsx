@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SearchLogo } from "../../assets/constants";
-import Modal from '../Modal/Modal';
 import useSearchUser from '../../hooks/useSearchUser';
 import SuggestedUser from '../SuggestedUsers/SuggestedUser';
+import ModalTest from '../Modal/ModalTest';
 
 
 const Search = () => {
@@ -23,7 +23,7 @@ const Search = () => {
           <SearchLogo />
           <span className="on-desktop">Search</span>
         </div>
-        <Modal open={isOpen} onClose={()=>setIsOpen(false) } forComponent="searchUser">
+        <ModalTest isOpen={isOpen} onClose={()=>setIsOpen(false) }>
           <div className="search-user-modal-container">
             <h3>Search user</h3>
             <form onSubmit={handleSearchUser} className="search-user-form">
@@ -32,9 +32,14 @@ const Search = () => {
                 Search
               </button>
             </form>
-            {user && <SuggestedUser user={user} setUser={setUser}/>}
+            {user && (
+              <div className="suggested-user-in-modal-container">
+                <SuggestedUser user={user} setUser={setUser}/>
+              </div>
+
+          )}
           </div>
-        </Modal>
+        </ModalTest>
     </>
 
   )

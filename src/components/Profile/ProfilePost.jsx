@@ -1,8 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaComment } from 'react-icons/fa'
 import {MdDelete} from 'react-icons/md'
-import Modal from '../Modal/Modal'
 import Avatar from '../Avatar/Avatar'
 import Comment from '../Comment/Comment'
 import PostFooter from '../FeedPosts/PostFooter'
@@ -14,6 +13,8 @@ import { arrayRemove, deleteDoc, doc, updateDoc } from 'firebase/firestore'
 import { deleteObject, ref } from "firebase/storage";
 import usePostStore from '../../store/postStore'
 import Caption from '../Comment/Caption'
+import ModalTest from '../Modal/ModalTest'
+import ProfilePostModal from '../Modals/ProfilePostModal'
 
 const ProfilePost = ({post}) => {
 
@@ -24,6 +25,7 @@ const ProfilePost = ({post}) => {
     const [isDeleting, setIsDeleting] = useState(false)
     const deletePost = usePostStore(state=>state.deletePost)
     const decrementPostsCount = useUserProfileStore(state=>state.deletePost)
+    const commentsContainerRef = useRef(null)
 
     const handleDeletePost = async () => {
         if(!window.confirm("Are you sure you want to delete this post?")) return
@@ -50,6 +52,7 @@ const ProfilePost = ({post}) => {
         }
     }
 
+
   return (
     <div className="wrapper-test">
         <div  className="profile-post-image-container" onClick={()=> setIsOpen(true)}>
@@ -66,34 +69,7 @@ const ProfilePost = ({post}) => {
 
             </div>
         </div>
-        <Modal open={isOpen} onClose={()=> setIsOpen(false)} img={post.imageURL} forComponent="profilePost">
-            <div className="modal-header">
-                <Avatar size="sm" avatar={userProfile.profilePicURL}/>
-                <span className="username">{userProfile.username}</span>
-
-               {authUser?.uid === userProfile.uid &&(
-                 <span className="delete-post-button" onClick={handleDeletePost}>
-                    <MdDelete size="20"/>
-                 </span>
-               )}
-            </div>
-            <div className="profile-post-info">
-                {/* caption */}
-                {[post.caption && <Caption post={post}/>]}
-                {/* comments */}
-                <div className="comments">
-                    {post.comments.map(comment=>
-                        <Comment
-                            key={comment.id}
-                            comment={comment}
-                    />)}
-                </div>
-                <div className="profile-post-footer">
-                    <PostFooter post={post} isProfilePage={true}/>
-                </div>
-            </div>
-
-        </Modal>
+        <ProfilePostModal isOpen={isOpen} onClose={()=>setIsOpen(false)} post={post} handleDeletePost={handleDeletePost}/>
     </div>
   )
 }

@@ -51,11 +51,11 @@ const PostFooter = ({post,creatorProfile,isProfilePage}) => {
 
             </>
         )}
-        
+
         {authUser &&(
             <form action="" className="create-comment-form flex">
                 <input type="text" placeholder="Add a comment..." onChange={(e)=>setComment(e.target.value)} value={comment} ref={commentRef}/>
-                <button onClick={handleSubmitComment} className="create-post-btn">Post</button>
+                <button onClick={handleSubmitComment} className="create-post-btn" disabled={!comment} >Post</button>
             </form>
         )}
 

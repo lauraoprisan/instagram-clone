@@ -12,6 +12,7 @@ import usePostStore from '../../store/postStore';
 import useAuthStore from '../../store/authStore';
 import useUserProfileStore from '../../store/userProfileStore';
 import { useLocation } from "react-router-dom";
+import ModalTest from '../Modal/ModalTest';
 
 const CreatePost = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -42,8 +43,8 @@ const CreatePost = () => {
       </div>
 
       {isOpen && (
-        <Modal open={isOpen} onClose={()=>setIsOpen(false)} forComponent="searchUser">
-          <div className="search-user-modal-container">
+        <ModalTest isOpen={isOpen} onClose={()=>setIsOpen(false)}>
+          <div className="create-post-modal-container">
             <h3>Create a post</h3>
             <form className="search-user-form">
               <input type="text"
@@ -80,7 +81,7 @@ const CreatePost = () => {
               </button>
             </form>
           </div>
-        </Modal>
+        </ModalTest>
       )}
     </>
 

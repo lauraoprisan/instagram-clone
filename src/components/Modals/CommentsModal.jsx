@@ -40,7 +40,7 @@ const CommentsModal = ({isOpen, onClose, post}) => {
 
             </div>
             <input type="text" placeholder="Write your comment..." value={comment} onChange={(e)=>setComment(e.target.value)}/>
-            <button className="modal-action-btn" onClick={handleSubmitComment} disabled={isCommenting}>Post</button>
+            <button className="modal-action-btn" onClick={handleSubmitComment} disabled={!comment}>Post</button>
         </div>
     </ModalTest>
   )

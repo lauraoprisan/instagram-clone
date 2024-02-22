@@ -60,11 +60,22 @@ input {
     width:100%;
 }
 
+button:hover, a:hover{
+    color:rgb(255, 255, 255);
+    font-weight: 700;
+}
+
+
+button:disabled{
+    color:rgba(128, 128, 128, 0.883);
+}
+
+
 .login-btn {
     border-radius: 5px;
-    padding:5px 60px;
+    padding:5px;
     background-color: rgb(222, 255, 255);
-    width:30%;
+    width:100%;
     margin-top:20px;
 }
 
@@ -316,10 +327,6 @@ button, a{
     text-decoration: none;
 }
 
-button:hover, a:hover{
-    color:rgb(255, 255, 255);
-    font-weight: 700;
-}
 
 .feedpost-footer{
     display: flex;
@@ -671,10 +678,12 @@ input:focus {
     .modal-header{
         display:flex;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
         border-bottom:1px solid rgba(255, 255, 255, 0.22);
         height:60px;
     }
+
+
 
     .modal-header .username{
         padding-left:1rem;
@@ -717,6 +726,7 @@ input:focus {
     }
 
     .comment-container{
+        display:flex;
         gap:0.7rem;
         font-size: 0.9rem;
         margin-bottom: 10px;
@@ -744,13 +754,6 @@ input:focus {
         margin-bottom:10px;
     }
 
-    .search-user-modal{
-        position:relative;
-        flex-direction: column;
-        max-width:500px;
-        align-items: flex-start;
-    }
-
     .modal-close-button{
         position:absolute;
         top:0;
@@ -775,7 +778,7 @@ input:focus {
     /* modal test*/
     .modal-test{
         min-width:300px;
-        min-height:300px;
+        min-height:200px;
         position:fixed;
         border:1px solid rgba(255, 255, 255, 0.19);
         top:50%;
@@ -823,6 +826,52 @@ input:focus {
     }
     /* /comments modal*/
 
+    /* ^profile post modal*/
+    .profile-post-modal-container{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        width:80vw;
+        max-width:1200px;
+    }
+
+    .modal-right-content{
+        flex-direction: column;
+    }
+
+    .profile-post-info{
+        width:90%;
+    }
+
+    .modal-header{
+        display:flex;
+        justify-content:flex-start;
+        align-items: center;
+        border-bottom:1px solid rgba(255, 255, 255, 0.22);
+        height:60px;
+        width:100%;
+    }
+
+
+
+    .modal-header .username{
+        padding-left:1rem;
+    }
+     /* /profile post modal*/
+     /* search user modal*/
+     .search-user-modal-container, .create-post-modal-container{
+        position:relative;
+        flex-direction: column;
+        align-items: flex-start;
+        width:80vw;
+        max-width: 500px;
+        padding:20px;
+    }
+
+    .suggested-user-in-modal-container{
+        padding:0 20px;
+    }
+     /* /search user modal*/
     /* /modal-test*/
 /* /modal*/
 
@@ -842,13 +891,6 @@ input:focus {
     background:#555;
 }
 
-.modal-for-editProfile-container{
-    display:flex;
-    flex-direction: row;
-    border:1px solid rgb(255, 255, 255);
-    padding:20px 30px;
-    width:100%;
-}
 
 .edit-mode{
     width:70%;
@@ -868,11 +910,12 @@ input:focus {
     display:flex;
     flex-direction: column;
     justify-content: center;
-
     flex:1;
-    padding-left:30px;
-    padding-top:60px;
     gap:1rem;
+    border:1px solid rgb(255, 255, 255);
+    padding:20px 30px;
+    padding-top:60px;
+    width:100%;
 }
 
 .edit-profile-modal-content h1{
@@ -1074,13 +1117,14 @@ div.edit-form-buttons-container{
         display:none;
     }
 
+
     .modal-right-content{
         width:5px;
     }
 
     .modal-img-container{
         flex:1;
-        align-items: flex-start;
+        /* align-items: flex-start; */
     }
 
     .modal-right-content{
@@ -1103,6 +1147,40 @@ div.edit-form-buttons-container{
         padding-top:10px;
         height:inherit;
     }
+
+    .profile-post-modal{
+        /* min-width:300px;
+        min-height:300px;
+        position:relative;
+        border:1px solid rgba(255, 255, 255, 0.19);
+        top:10%;
+        left:50%;
+        transform:translate(-50%, 0%);
+        background-color:  #000000;
+        z-index:1000; */
+    }
+
+    .profile-post-modal-container{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile-post-modal-container img{
+        padding-right: 50px;
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .modal-right-content{
+        display:none;
+    }
+
+    .modal-test{
+        min-height:10px;
+    }
+
+
 
 }
 
@@ -1186,9 +1264,17 @@ div.edit-form-buttons-container{
         align-self: center;
         gap:0.5rem;
     }
-    .modal-for-editProfile-container{
-        padding:20px 10px;
+    .edit-profile-modal-content{
+        padding:20px 20px;
+        width:70vw;
     }
+
     /* /profile page*/
 
+}
+
+@media (max-width:527px){
+    .edit-profile-modal-content{
+        width:80vw;
+    }
 }

@@ -11,7 +11,7 @@ const ModalTest = ({isOpen, onClose, children}) => {
         <>
             <div className="overlay-outside-modal">
             </div>
-            <div className="modal-test">
+            <div className="modal-test profile-post-modal">
                 {children}
                 <button
                     className="modal-close-button-test"

@@ -10,7 +10,7 @@ const Comment = ({comment}) => {
 
   if(isLoading) return <Loading/>
   return (
-    <div className="flex comment-container">
+    <div className="comment-container">
       <Link to={`/${userProfile.username}`}>
         <Avatar size="lg" avatar={userProfile.profilePicURL}/>
       </Link>
