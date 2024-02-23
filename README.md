@@ -1,13 +1,13 @@
 
 
-# Instagram clone App
+# Instagram Clone App
 <a href="https://social-app-instcl.vercel.app/" target="_blank">
-<h1>Instagram Clone App</h1>
+<span>Link to the app</span>
 </a>
 
 
 ## Description of the App
-This is a basic instagram clone that I have build by following this youtube tutorial:https://www.youtube.com/watch?v=RMScMwY2B6Q&t=2441s. Most of the frontend is done by me in css, and not by using chackra-ui as in the video.
+This is a basic instagram clone that I have build by following this youtube tutorial: https://www.youtube.com/watch?v=RMScMwY2B6Q&t=2441s. Most of the frontend is done by me in css, and not by using chackra-ui as in the video.
 
 The app is build with React and Firebase.
 
