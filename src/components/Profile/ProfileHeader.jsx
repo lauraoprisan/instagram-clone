@@ -16,9 +16,6 @@ const ProfileHeader = () => {
     const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username;
 	const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile.username;
 
-    console.log("visitingOwnProfileAndAuth", visitingOwnProfileAndAuth)
-    console.log("visitingAnotherProfileAndAuth", visitingAnotherProfileAndAuth)
-
   return (
      <div className="profile-header">
 

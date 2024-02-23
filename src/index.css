@@ -1139,7 +1139,7 @@ div.edit-form-buttons-container{
     .modal-img-container img{
 
         width:100%;
-        max-height:fit-content;
+        max-height:80vh;
         max-width:fit-content
     }
 

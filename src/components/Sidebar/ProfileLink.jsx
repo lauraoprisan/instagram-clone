@@ -5,7 +5,6 @@ import useAuthStore from '../../store/authStore'
 
 const ProfileLink = () => {
   const authUser = useAuthStore(state=>state.user)
-  console.log("authUser from profile link", authUser)
   return (
     <Link to={`/${authUser?.username}`}>
         <Avatar avatar={authUser?.profilePicURL} size="sm"/>

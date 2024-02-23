@@ -15,7 +15,6 @@ const EditProfile = ({open,onClose}) => {
         bio:authUser?.bio || "",
     })
 
-    console.log("bio input from editprofile: ", inputs.bio)
     const fileRef = useRef(null)
     const {handleImageChange, selectedFile, setSelectedFile} = usePreviewImg()
     const {isUpdating, editProfile} = useEditProfile()
@@ -39,8 +38,6 @@ const EditProfile = ({open,onClose}) => {
         }
     }
 
-    console.log("inputs",inputs)
-    console.log("authuser", authUser)
   return (
     <ModalTest isOpen={open} onClose={onClose}>
         <div className="edit-profile-modal-content ">
@@ -73,7 +70,6 @@ const EditProfile = ({open,onClose}) => {
                         value={inputs.bio}
                         onChange={(e)=>{
                             setInputs({...inputs, bio:e.target.value})
-                            console.log(e.target.value)
                         }
                         }
                     />

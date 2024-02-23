@@ -31,8 +31,6 @@ const ProfilePost = ({post}) => {
         if(!window.confirm("Are you sure you want to delete this post?")) return
         if(isDeleting) return //so that you cannot click the same button again and do stuff over other stuff
         try {
-            console.log("from try delete post")
-
             const imageRef = ref(storage, `posts/${post.id}`)
             await deleteObject(imageRef)
             const userRef= doc(firestore,"users", authUser.uid)

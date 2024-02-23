@@ -6,8 +6,6 @@ import Avatar from '../Avatar/Avatar'
 const SuggestedHeader = () => {
     const {handleLogout, isLoggingOut} = useLogOut()
     const authUser = useAuthStore((state)=>state.user)
-    console.log(authUser)
-
     if(!authUser) return null
 
     return (

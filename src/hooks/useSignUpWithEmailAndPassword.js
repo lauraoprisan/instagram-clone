@@ -7,7 +7,6 @@ import useAuthStore from '../store/authStore';
 const useSignUpWithEmailAndPassword = () => {
     const [createUserWithEmailAndPassword,,loading,error] = useCreateUserWithEmailAndPassword(auth);
     const loginUser = useAuthStore(state =>state.login)
-    console.log("login user from login hook", loginUser)
 
     const signup = async(inputs)=>{
 

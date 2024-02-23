@@ -14,12 +14,11 @@ const useGetUserProfileById = (userId) => {
 			setIsLoading(true);
 			setUserProfile(null);
 			try {
-				console.log("hei")
+
 				const userRef = await getDoc(doc(firestore, "users", userId));
 				if (userRef.exists()) {
 					setUserProfile(userRef.data());
 				}
-				console.log("user from hook", userProfile)
 			} catch (error) {
 				showToast("Error", error.message, "error");
 			} finally {
