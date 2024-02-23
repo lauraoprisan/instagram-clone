@@ -1,8 +1,19 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# Instagram clone App
+<a href="https://social-app-instcl.vercel.app/" target="_blank">
+<h1>Instagram Clone App</h1>
+</a>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Description of the App
+This is a basic instagram clone that I have build by following this youtube tutorial:https://www.youtube.com/watch?v=RMScMwY2B6Q&t=2441s. Most of the frontend is done by me in css, and not by using chackra-ui as in the video.
+
+The app is build with React and Firebase.
+
+
+## Tech used: ![HTML5 BADGE](https://img.shields.io/static/v1?label=|&message=HTML5&color=23555f&style=plastic&logo=html5)![CSS BADGE](https://img.shields.io/static/v1?label=|&message=CSS3&color=285f65&style=plastic&logo=css3)![JAVASCRIPT BADGE](https://img.shields.io/static/v1?label=|&message=JAVASCRIPT&color=3c7f5d&style=plastic&logo=javascript)![REACT BADGE](https://img.shields.io/static/v1?label=|&message=REACT&color=23555f&style=plastic&logo=react)![FIREBASE BADGE](https://img.shields.io/static/v1?label=|&message=FIREBASE&color=fcba03&style=plastic&logo=firebase)
+
+
+
+
