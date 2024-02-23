@@ -3,7 +3,7 @@ import Sidebar from '../../components/Sidebar/Sidebar'
 import { useLocation } from 'react-router'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../firebase/firebase'
-import Navbar from '../../components/Navbar/navbar'
+import Navbar from '../../components/Navbar/Navbar'
 import Spinner from '../../components/Loading/Spinner'
 
 const PageLayout = ({children}) => {
