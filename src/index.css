@@ -338,9 +338,18 @@ button, a{
 }
 
 .interaction-post-icons{
+    width:100%;
     gap:1rem;
     margin:5px;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;;
 }
+
+.save-post-icon{
+    margin-left:auto;
+}
+
 .feedpost-description{
     gap:1rem;
 }
@@ -348,6 +357,7 @@ button, a{
 .interaction-post-icons div{
     cursor: pointer;
 }
+
 
 .number-of-likes, .view-comments{
     font-size: 0.85rem;

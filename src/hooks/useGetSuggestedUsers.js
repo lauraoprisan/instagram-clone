@@ -21,7 +21,6 @@ const useGetSuggestedUsers = () => {
                     orderBy("uid"),
                     limit(3)
                 )
-
                 const querySnapshot = await getDocs(q)
                 const users =[]
                 querySnapshot.forEach(doc=>{

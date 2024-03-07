@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router'
 import Login from './Login'
 import Signup from './Signup'
 import GoogleAuth from './GoogleAuth'
 
-
 const AuthForm = () => {
     const [isLogin, setIsLogin] = useState(true)
-    const navigate = useNavigate()
 
 
   return (

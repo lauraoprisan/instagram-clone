@@ -1,6 +1,4 @@
 
-import { Link } from 'react-router-dom'
-import Avatar from '../Avatar/Avatar'
 import SuggestedUser from './SuggestedUser'
 import SuggestedHeader from './SuggestedHeader'
 import useGetSuggestedUsers from '../../hooks/useGetSuggestedUsers'

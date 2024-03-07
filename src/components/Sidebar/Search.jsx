@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { SearchLogo } from "../../assets/constants";
 import useSearchUser from '../../hooks/useSearchUser';
 import SuggestedUser from '../SuggestedUsers/SuggestedUser';
-import ModalTest from '../Modal/ModalTest';
+import Modal from '../Modal/Modal';
 
 
 const Search = () => {
@@ -22,7 +22,7 @@ const Search = () => {
           <SearchLogo />
           <span className="on-desktop">Search</span>
         </div>
-        <ModalTest isOpen={isOpen} onClose={()=>setIsOpen(false) }>
+        <Modal isOpen={isOpen} onClose={()=>setIsOpen(false) }>
           <div className="search-user-modal-container">
             <h3>Search user</h3>
             <form onSubmit={handleSearchUser} className="search-user-form">
@@ -38,7 +38,7 @@ const Search = () => {
 
           )}
           </div>
-        </ModalTest>
+        </Modal>
     </>
 
   )

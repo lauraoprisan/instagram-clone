@@ -27,7 +27,7 @@ const useSignUpWithEmailAndPassword = () => {
 
         try {
 
-            const newUser = await createUserWithEmailAndPassword(inputs.email, inputs.password)
+            const newUser = await createUserWithEmailAndPassword(inputs.email, inputs.password)     //creates and returns an object if the user was not auth before with the same email
             if(!newUser && error){
                 console.log(error)
                 return
@@ -43,11 +43,12 @@ const useSignUpWithEmailAndPassword = () => {
                     followers:[],
                     following:[],
                     posts:[],
+                    savedPosts:[],
                     createdAt:Date.now(),
                 }
                 await setDoc(doc(firestore, "users", newUser.user.uid), userDoc); //this created a doc in firestore
                 localStorage.setItem("user-info", JSON.stringify(userDoc)) //saves it in local storage
-                loginUser(userDoc)
+                loginUser(userDoc)  //saves it in Global State management
             }
         } catch (error) {
             console.log(error)

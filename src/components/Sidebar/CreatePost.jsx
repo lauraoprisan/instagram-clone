@@ -12,7 +12,6 @@ import usePostStore from '../../store/postStore';
 import useAuthStore from '../../store/authStore';
 import useUserProfileStore from '../../store/userProfileStore';
 import { useLocation } from "react-router-dom";
-import ModalTest from '../Modal/ModalTest';
 
 const CreatePost = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -43,7 +42,7 @@ const CreatePost = () => {
       </div>
 
       {isOpen && (
-        <ModalTest isOpen={isOpen} onClose={()=>setIsOpen(false)}>
+        <Modal isOpen={isOpen} onClose={()=>setIsOpen(false)}>
           <div className="create-post-modal-container">
             <h3>Create a post</h3>
             <form className="search-user-form">
@@ -81,7 +80,7 @@ const CreatePost = () => {
               </button>
             </form>
           </div>
-        </ModalTest>
+        </Modal>
       )}
     </>
 
@@ -107,6 +106,7 @@ function useCreatePost() {
 		const newPost = {
 			caption: caption,
 			likes: [],
+      savedBy:[],
 			comments: [],
 			createdAt: Date.now(),
 			createdBy: authUser.uid,

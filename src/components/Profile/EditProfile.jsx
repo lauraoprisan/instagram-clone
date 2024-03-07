@@ -5,7 +5,7 @@ import usePreviewImg from '../../hooks/usePreviewImg'
 import useEditProfile from '../../hooks/useEditProfile'
 import useShowToast from '../../hooks/useShowToast'
 import { useNavigate } from "react-router-dom";
-import ModalTest from '../Modal/ModalTest'
+import Modal from '../Modal/Modal'
 
 const EditProfile = ({open,onClose}) => {
     const authUser = useAuthStore(state=>state.user)
@@ -39,7 +39,7 @@ const EditProfile = ({open,onClose}) => {
     }
 
   return (
-    <ModalTest isOpen={open} onClose={onClose}>
+    <Modal isOpen={open} onClose={onClose}>
         <div className="edit-profile-modal-content ">
             <h1>Edit Profile</h1>
             <div className="flex user-snippet">
@@ -80,7 +80,7 @@ const EditProfile = ({open,onClose}) => {
                 </div>
             </form>
         </div>
-    </ModalTest>
+    </Modal>
   )
 }
 

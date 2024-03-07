@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import ModalTest from '../Modal/ModalTest'
+import Modal from '../Modal/Modal'
 import Comment from '../Comment/Comment'
 import usePostComment from '../../hooks/usePostComment'
 
@@ -30,7 +30,7 @@ const CommentsModal = ({isOpen, onClose, post}) => {
     },[isOpen,post.comments.length])
 
   return (
-    <ModalTest isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose}>
         <div className="vertical-modal">
             <h3>Comments</h3>
             <div className="all-comments" ref={commentsContainerRef}>
@@ -42,7 +42,7 @@ const CommentsModal = ({isOpen, onClose, post}) => {
             <input type="text" placeholder="Write your comment..." value={comment} onChange={(e)=>setComment(e.target.value)}/>
             <button className="modal-action-btn" onClick={handleSubmitComment} disabled={!comment}>Post</button>
         </div>
-    </ModalTest>
+    </Modal>
   )
 }
 

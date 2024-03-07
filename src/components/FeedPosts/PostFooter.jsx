@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react'
-import { CommentLogo, NotificationsLogo, UnlikeLogo } from '../../assets/constants'
+import { CommentLogo, NotificationsLogo, SavedPost, UnlikeLogo, UnSavedPost } from '../../assets/constants'
 import usePostComment from '../../hooks/usePostComment';
 import useAuthStore from '../../store/authStore';
 import useLikePost from '../../hooks/useLikePost';
 import { timeAgo } from "../../utils/timeAgo";
 import CommentsModal from '../Modals/CommentsModal';
+import useSavePost from '../../hooks/useSavePost';
 
 const PostFooter = ({post,creatorProfile,isProfilePage}) => {
 
@@ -14,6 +15,7 @@ const PostFooter = ({post,creatorProfile,isProfilePage}) => {
     const commentRef = useRef(null)
     const {handleLikePost, isLiked, likes} = useLikePost(post)
     const [isOpen, setIsOpen] = useState(false)
+    const {isSaved,isSaving,handleSavePost} = useSavePost(post)
 
     const handleSubmitComment = async (e) => {
         e.preventDefault();
@@ -21,14 +23,19 @@ const PostFooter = ({post,creatorProfile,isProfilePage}) => {
         setComment("");
     }
 
+
   return (
     <div className="feedpost-footer">
-        <div className="interaction-post-icons flex">
+        <div className="interaction-post-icons">
             <div onClick={handleLikePost}>
                 {isLiked ? <UnlikeLogo/> : <NotificationsLogo/>}
             </div>
             <div onClick={()=>commentRef.current.focus()}>
                 <CommentLogo/>
+            </div>
+            <div className="save-post-icon" onClick={handleSavePost}>
+                {isSaved ? <SavedPost/> :<UnSavedPost/>}
+
             </div>
         </div>
         <span className="number-of-likes">{likes} likes</span>

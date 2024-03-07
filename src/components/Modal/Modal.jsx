@@ -3,35 +3,22 @@ import ReactDom from'react-dom'
 import { IoClose } from "react-icons/io5";
 
 
-const Modal = ({open,children, onClose, img, forComponent}) => {
+const Modal = ({isOpen, onClose, children}) => {
 
-    if(!open) return null
+    if(!isOpen) return null
 
     return ReactDom.createPortal (
         <>
-            <div className="overlay-outside-modal"></div>
-            <div className={forComponent == "editProfile" ? "modal flex edit-mode modal-layout":"modal flex modal-layout "}>
-
-            {forComponent == "searchUser" && (
-                <div className=" search-user-modal">
-                    {children}
-                    <button className="modal-close-button close-edit" onClick={onClose}>
-                            <IoClose size={20}/>
-                    </button>
-                </div>
-            )}
-
-            {forComponent == "editProfile" && (
-                <div className="modal-for-editProfile-container">
-                    {children}
-                    <button className="modal-close-button close-edit" onClick={onClose}>
-                            <IoClose size={20}/>
-                    </button>
-                </div>
-            )}
-
-
-
+            <div className="overlay-outside-modal">
+            </div>
+            <div className="modal-test profile-post-modal">
+                {children}
+                <button
+                    className="modal-close-button-test"
+                    onClick={onClose}
+                >
+                    <IoClose size={20}/>
+                </button>
             </div>
         </>,
         document.getElementById('portal')

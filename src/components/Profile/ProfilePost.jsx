@@ -1,10 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { AiFillHeart } from 'react-icons/ai'
 import { FaComment } from 'react-icons/fa'
-import {MdDelete} from 'react-icons/md'
-import Avatar from '../Avatar/Avatar'
-import Comment from '../Comment/Comment'
-import PostFooter from '../FeedPosts/PostFooter'
 import useUserProfileStore from '../../store/userProfileStore'
 import useAuthStore from '../../store/authStore'
 import useShowToast from '../../hooks/useShowToast'
@@ -12,8 +8,6 @@ import {firestore, storage} from '../../firebase/firebase'
 import { arrayRemove, deleteDoc, doc, updateDoc } from 'firebase/firestore'
 import { deleteObject, ref } from "firebase/storage";
 import usePostStore from '../../store/postStore'
-import Caption from '../Comment/Caption'
-import ModalTest from '../Modal/ModalTest'
 import ProfilePostModal from '../Modals/ProfilePostModal'
 
 const ProfilePost = ({post}) => {

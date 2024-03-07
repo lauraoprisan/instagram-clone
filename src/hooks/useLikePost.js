@@ -11,7 +11,7 @@ const useLikePost = (post) => {
 	const [isLiked, setIsLiked] = useState(post.likes.includes(authUser?.uid));
 	const showToast = useShowToast();
 
-	const handleLikePost = async () => { 
+	const handleLikePost = async () => {
 		if (isUpdating) return;
 		if (!authUser) return showToast("Error", "You must be logged in to like a post", "error");
 		setIsUpdating(true);
@@ -22,8 +22,10 @@ const useLikePost = (post) => {
 				likes: isLiked ? arrayRemove(authUser.uid) : arrayUnion(authUser.uid),
 			});
 
-			setIsLiked(!isLiked);
+
 			isLiked ? setLikes(likes - 1) : setLikes(likes + 1);
+			setIsLiked(!isLiked);
+
 		} catch (error) {
 			showToast("Error", error.message, "error");
 		} finally {

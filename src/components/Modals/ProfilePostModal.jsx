@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import ModalTest from '../Modal/ModalTest'
+import Modal from '../Modal/Modal'
 import PostFooter from '../FeedPosts/PostFooter'
 import Caption from '../Comment/Caption'
 import { MdDelete } from 'react-icons/md'
@@ -30,7 +30,7 @@ const ProfilePostModal = ({isOpen, onClose, post, handleDeletePost}) => {
     },[isOpen,post.comments.length])
 
   return (
-    <ModalTest isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose}>
         <div className="profile-post-modal-container">
             <div className="modal-img-container">
                 <img  src={post.imageURL} alt="" />
@@ -65,7 +65,7 @@ const ProfilePostModal = ({isOpen, onClose, post, handleDeletePost}) => {
         </div>
 
 
-    </ModalTest>
+    </Modal>
   )
 }
 
