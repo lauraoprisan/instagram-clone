@@ -7,6 +7,7 @@ import ProfileHeader from '../../components/Profile/ProfileHeader'
 import { Flex, Skeleton, SkeletonCircle, VStack } from '@chakra-ui/react'
 import useGetUserPosts from '../../hooks/useGetUserPosts'
 import useGetUserLikedPosts from '../../hooks/useGetUserLikedPosts'
+import useGetUserSavedPosts from '../../hooks/useGetUserSavedPosts'
 
 
 const ProfilePage = () => {
@@ -15,20 +16,25 @@ const ProfilePage = () => {
     const {isLoading, userProfile}= useGetUserProfileByUsername(username)
     const { isGettingPosts, getPosts } = useGetUserPosts();
     const {gettingLikedPosts, getLikedPosts} = useGetUserLikedPosts();
+    const {gettingSavedPosts, getSavedPosts} = useGetUserSavedPosts();
 
 
     const userNotFound = !isLoading && !userProfile
     if(userNotFound) return <UserNotFound/>
 
-    const handleShowLikedPosts = async() =>{
+    const handleShowLikedPosts = async() => {
         await getLikedPosts()
     }
 
-    const handleShowOwnPosts = async()=>{
+    const handleShowOwnPosts = async() => {
         await getPosts()
     }
 
-    const postsAreLoading= isGettingPosts || gettingLikedPosts
+    const handleShowSavedPosts = async() => {
+        await getSavedPosts()
+    }
+
+    const postsAreLoading= isGettingPosts || gettingLikedPosts || gettingSavedPosts
 
   return (
     <div className="profile-container">
@@ -42,7 +48,7 @@ const ProfilePage = () => {
                     </div>
                     <span className="on-desktop">Posts</span>
                 </div>
-                <div className="tab" >
+                <div className="tab" onClick={handleShowSavedPosts}>
                     <div className="profile-icon">
                         <BsBookmark/>
                     </div>

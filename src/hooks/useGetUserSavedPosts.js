@@ -5,20 +5,21 @@ import useAuthStore from "../store/authStore";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../firebase/firebase";
 
-const useGetUserLikedPosts = () => {
-    const [gettingLikedPosts, setGettingLikedPosts] = useState(false);
+
+const useGetUserSavedPosts = () => {
+    const [gettingSavedPosts, setGettingSavedPosts] = useState(false);
 	const { posts, setPosts } = usePostStore();
 	const showToast = useShowToast();
 	const authUser = useAuthStore((state) => state.user);
 
 
-    const getLikedPosts = async () => {
-        if (!authUser) return showToast("Error","You have to be logged in to see liked posts", "error");
-        setGettingLikedPosts(true);
+    const getSavedPosts = async () => {
+        if (!authUser) return showToast("Error","You have to be logged in to see saved posts", "error");
+        setGettingSavedPosts(true);
         setPosts([]);
 
         try {
-            const q = query(collection(firestore, "posts"), where("likes", "array-contains", authUser.uid));
+            const q = query(collection(firestore, "posts"), where("savedBy", "array-contains", authUser.uid));
             const querySnapshot = await getDocs(q);
 
             const posts = [];
@@ -32,12 +33,12 @@ const useGetUserLikedPosts = () => {
             showToast("Error", error.message, "error");
             setPosts([]);
         } finally {
-            setGettingLikedPosts(false);
+            setGettingSavedPosts(false);
         }
     };
 
 
-	return { gettingLikedPosts, getLikedPosts };
+	return { gettingSavedPosts, getSavedPosts };
 }
 
-export default useGetUserLikedPosts
+export default useGetUserSavedPosts

@@ -19,7 +19,7 @@ const useSavePost = (post) => {
         try {
             const postRef = doc(firestore,"posts",post.id)
             await updateDoc(postRef,{
-                savedBy: isSaved ? arrayRemove(post.id) : arrayUnion(post.id),
+                savedBy: isSaved ? arrayRemove(authUser.uid) : arrayUnion(authUser.uid),
             })
 
             setIsSaved(!isSaved)
