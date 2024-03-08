@@ -5,17 +5,30 @@ import useGetUserProfileByUsername from '../../hooks/useGetUserProfileByUsername
 import { Link, useParams } from "react-router-dom"
 import ProfileHeader from '../../components/Profile/ProfileHeader'
 import { Flex, Skeleton, SkeletonCircle, VStack } from '@chakra-ui/react'
-
+import useGetUserPosts from '../../hooks/useGetUserPosts'
+import useGetUserLikedPosts from '../../hooks/useGetUserLikedPosts'
 
 
 const ProfilePage = () => {
 
     const {username} = useParams()
     const {isLoading, userProfile}= useGetUserProfileByUsername(username)
+    const { isGettingPosts, getPosts } = useGetUserPosts();
+    const {gettingLikedPosts, getLikedPosts} = useGetUserLikedPosts();
+
 
     const userNotFound = !isLoading && !userProfile
-
     if(userNotFound) return <UserNotFound/>
+
+    const handleShowLikedPosts = async() =>{
+        await getLikedPosts()
+    }
+
+    const handleShowOwnPosts = async()=>{
+        await getPosts()
+    }
+
+    const postsAreLoading= isGettingPosts || gettingLikedPosts
 
   return (
     <div className="profile-container">
@@ -23,19 +36,19 @@ const ProfilePage = () => {
         {isLoading && <ProfileHeaderSkeleton />}
         <div className="profile-main-content">
             <div className="tabs">
-                <div className="tab">
+                <div className="tab" onClick={handleShowOwnPosts}>
                     <div className="profile-icon">
                         <BsGrid3X3/>
                     </div>
                     <span className="on-desktop">Posts</span>
                 </div>
-                <div className="tab">
+                <div className="tab" >
                     <div className="profile-icon">
                         <BsBookmark/>
                     </div>
                     <span className="on-desktop">Saved</span>
                 </div>
-                <div className="tab">
+                <div className="tab" onClick={handleShowLikedPosts}>
                     <div className="profile-icon">
                         <BsSuitHeart/>
                     </div>
@@ -43,7 +56,7 @@ const ProfilePage = () => {
                 </div>
             </div>
 
-            <ProfilePosts/>
+            <ProfilePosts postsAreLoading={postsAreLoading}/>
         </div>
     </div>
   )

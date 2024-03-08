@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import Loading from '../Loading/Loading'
 import ProfilePost from './ProfilePost'
-import useGetUserPosts from '../../hooks/useGetUserPosts';
+import usePostStore from '../../store/postStore';
 
-const ProfilePosts = () => {
+const ProfilePosts = ({postsAreLoading}) => {
 
-    const { isLoading, posts } = useGetUserPosts();
 
-	const noPostsFound = !isLoading && posts.length === 0;
+    const { posts, setPosts } = usePostStore();
+
+	const noPostsFound = !postsAreLoading && posts.length === 0;
 	if (noPostsFound) return <NoPostsFound />;
 
     return (
         <>
 
         <div className="profile-posts">
-            {isLoading &&<Loading/>}
+            {postsAreLoading &&<Loading/>}
 
-            {!isLoading && (
+            {!postsAreLoading && (
 				<>
 					{posts.map((post) => (
 						<ProfilePost post={post} key={post.id} />
