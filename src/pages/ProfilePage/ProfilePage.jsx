@@ -36,25 +36,29 @@ const ProfilePage = () => {
 
     const postsAreLoading= isGettingPosts || gettingLikedPosts || gettingSavedPosts
 
+    const handleBorderStyle = (e) => {
+        console.log(e.target)
+    }
+
   return (
     <div className="profile-container">
         {!isLoading && userProfile && <ProfileHeader/>}
         {isLoading && <ProfileHeaderSkeleton />}
         <div className="profile-main-content">
-            <div className="tabs">
-                <div className="tab" onClick={handleShowOwnPosts}>
+            <div className="tabs" onClick={handleBorderStyle}>
+                <div className="tab general-tab" onClick={handleShowOwnPosts}>
                     <div className="profile-icon">
                         <BsGrid3X3/>
                     </div>
                     <span className="on-desktop">Posts</span>
                 </div>
-                <div className="tab" onClick={handleShowSavedPosts}>
+                <div className="tab saved-tav" onClick={handleShowSavedPosts}>
                     <div className="profile-icon">
                         <BsBookmark/>
                     </div>
                     <span className="on-desktop">Saved</span>
                 </div>
-                <div className="tab" onClick={handleShowLikedPosts}>
+                <div className="tab liked-tab" onClick={handleShowLikedPosts}>
                     <div className="profile-icon">
                         <BsSuitHeart/>
                     </div>
