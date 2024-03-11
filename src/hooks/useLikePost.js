@@ -27,11 +27,13 @@ const useLikePost = (post) => {
 			// });
 
 			if(isLiked){
-				postData.likes = postData.likes.filter((obj, idx) => obj.user !== authUser.uid);
+				postData.likes = post.likes.filter(item=>item!=authUser.uid)
+				postData.likesInfo = postData.likes.filter((obj) => obj.user !== authUser.uid);
 			} else {
-				postData.likes.push({user:authUser.uid,date:Date.now()})
-			}
+				postData.likes.push(authUser.uid)
+				postData.likesInfo.push({user:authUser.uid,date:Date.now()})
 
+			}
 
 			await updateDoc(postRef, postData);
 
