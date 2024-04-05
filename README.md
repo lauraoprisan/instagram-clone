@@ -52,6 +52,7 @@ Some optimisations are:
 
 ## Notes
 Notifications are not yet implemented.
+
 The vercel.json file is added to solve some 404 errors. This is caused by vite.
 
 
