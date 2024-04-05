@@ -23,13 +23,15 @@ Steps:
     - npm run dev
 
 * The env files should include the following:
+
     VITE_FIREBASE_API_KEY = <your_data>
     VITE_FIREBASE_AUTH_DOMAIN = <your_data>
     VITE_FIREBASE_PROJECT_ID = <your_data>
     VITE_FIREBASE__STORAGE_BUCKET = <your_data>
     VITE_FIREBASE_MESSAGING_SENDER_ID = <your_data>
     VITE_FIREBASE_APP_ID= <your_data>
-    VITE_FIREBASE_MEASUREMENT_ID =  <your_data>  
+    VITE_FIREBASE_MEASUREMENT_ID = <your_data>
+    VITE_FIREBASE_MEASUREMENT_ID = <your_data>  
 
 These env variables are provided by firebase when you register an app.
 
