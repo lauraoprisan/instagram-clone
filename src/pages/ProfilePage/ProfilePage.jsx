@@ -14,6 +14,7 @@ import useAuthStore from '../../store/authStore'
 const ProfilePage = () => {
 
     const {username} = useParams()
+    console.log(username)
     const {isLoading, userProfile}= useGetUserProfileByUsername(username)
     const { isGettingPosts, getPosts } = useGetUserPosts();
     const {gettingLikedPosts, getLikedPosts} = useGetUserLikedPosts();
@@ -38,23 +39,21 @@ const ProfilePage = () => {
 
     const postsAreLoading= isGettingPosts || gettingLikedPosts || gettingSavedPosts
 
-    const handleBorderStyle = (e) => {
-        console.log(e.target)
-    }
+
 
   return (
     <div className="profile-container">
         {!isLoading && userProfile && <ProfileHeader/>}
         {isLoading && <ProfileHeaderSkeleton />}
         <div className="profile-main-content">
-            <div className="tabs" onClick={handleBorderStyle}>
+            <div className="tabs">
                 <div className="tab general-tab" onClick={handleShowOwnPosts}>
                     <div className="profile-icon">
                         <BsGrid3X3/>
                     </div>
                     <span className="on-desktop">Posts</span>
                 </div>
-                {userProfile.uid === authUser.uid && (
+                { userProfile?.uid === authUser?.uid && (
                     <>
                         <div className="tab saved-tav" onClick={handleShowSavedPosts}>
                             <div className="profile-icon">

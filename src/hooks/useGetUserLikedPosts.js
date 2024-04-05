@@ -25,8 +25,7 @@ const useGetUserLikedPosts = () => {
             querySnapshot.forEach((doc) => {
                 posts.push({ ...doc.data(), id: doc.id });
             });
-            console.log("posts here", posts)
-  
+
             setPosts(posts);
         } catch (error) {
             showToast("Error", error.message, "error");

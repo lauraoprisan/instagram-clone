@@ -15,7 +15,7 @@ const ProfileHeader = () => {
 
     const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username;
 	const visitingAnotherProfileAndAuth = authUser && authUser.username !== userProfile.username;
-    console.group(userProfile.profilePicURL)
+
   return (
      <div className="profile-header">
 

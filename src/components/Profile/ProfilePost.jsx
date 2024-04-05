@@ -20,7 +20,7 @@ const ProfilePost = ({post}) => {
     const deletePost = usePostStore(state=>state.deletePost)
     const decrementPostsCount = useUserProfileStore(state=>state.deletePost)
     const commentsContainerRef = useRef(null)
-console.log("post from saved",post)
+
     const handleDeletePost = async () => {
         if(!window.confirm("Are you sure you want to delete this post?")) return
         if(isDeleting) return //so that you cannot click the same button again and do stuff over other stuff

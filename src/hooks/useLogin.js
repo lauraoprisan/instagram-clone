@@ -22,7 +22,6 @@ const useLogin = () => {
 
         try {
             const userCred = await signInWithEmailAndPassword(inputs.email, inputs.password)    //signs in the user and returns an object; it returns an object if the user signed up before
-            console.log("userCred", userCred)
             if(userCred){   //if the signing process was successfull
                 const docRef = doc(firestore, "users", userCred.user.uid);  //searches the doc of the user in firebase
                 const docSnap = await getDoc(docRef);   //retrieves the user info from backend
