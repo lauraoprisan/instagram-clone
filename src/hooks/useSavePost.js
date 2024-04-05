@@ -1,13 +1,13 @@
 import { useState } from "react";
 import useAuthStore from "../store/authStore";
 import useShowToast from "./useShowToast";
-import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { addDoc, arrayRemove, arrayUnion, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { firestore } from "../firebase/firebase";
 
 const useSavePost = (post) => {
     const [isSaving, setIsSaving] = useState(false)
     const authUser = useAuthStore((state)=>state.user)
-    const [isSaved, setIsSaved] = useState(post.savedBy.includes(authUser?.uid))
+    const [isSaved, setIsSaved] = useState()
     const showToast = useShowToast()
 
 
@@ -15,14 +15,37 @@ const useSavePost = (post) => {
         if(isSaving) return
         if(!authUser) return  showToast("Error", "You must be logged in to save a post", "error")
         setIsSaving(true)
+        const newSave = {
+            userWhoSaved: authUser.uid,
+            postId: post.id,
+            date:Date.now(),
+        }
 
         try {
-            const postRef = doc(firestore,"posts",post.id)
-            await updateDoc(postRef,{
-                savedBy: isSaved ? arrayRemove(authUser.uid) : arrayUnion(authUser.uid),
-            })
+            const savesRef = collection(firestore, "saves");
+            const q = query(savesRef, where("userWhoSaved", "==", authUser.uid), where("postId", "==", post.id))
+            const querySnapshot = await getDocs(q);
+            console.log(querySnapshot)
 
-            setIsSaved(!isSaved)
+            if (!querySnapshot.empty) {
+                const docToDelete = querySnapshot.docs[0]; // Assuming there is at most one matching document
+                await deleteDoc(docToDelete.ref);
+                setIsSaved(true);
+            } else {
+                setIsSaved(false);
+
+                // Document doesn't exist, so create a new one
+                const newSave = {
+                    userWhoSaved: authUser.uid,
+                    postId: post.id,
+                    date: Date.now(),
+                };
+
+                const savedPost = await addDoc(collection(firestore, "saves"), newSave);
+                }
+
+                // Toggle the isSaved state
+                setIsSaved((prevIsSaved) => !prevIsSaved);
 
         } catch (error) {
             showToast("Error", error.message, "error")

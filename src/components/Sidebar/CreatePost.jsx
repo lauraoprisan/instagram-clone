@@ -107,8 +107,6 @@ function useCreatePost() {
 			caption: caption,
 			likes: [],
       likesInfo: [],
-      savedBy:[],
-      savedInfo:[],
 			comments: [],
 			createdAt: Date.now(),
 			createdBy: authUser.uid,
