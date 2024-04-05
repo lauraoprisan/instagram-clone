@@ -25,7 +25,7 @@ Steps:
 * The env files should include the following:
     VITE_FIREBASE_API_KEY = *****************
 
-    VITE_FIREBASE_AUTH_DOMAIN = ***************** /n
+    VITE_FIREBASE_AUTH_DOMAIN = ***************** \n
     VITE_FIREBASE_PROJECT_ID = *****************
     VITE_FIREBASE__STORAGE_BUCKET = *****************
     VITE_FIREBASE_MESSAGING_SENDER_ID = *****************
