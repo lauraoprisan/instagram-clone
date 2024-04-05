@@ -37,7 +37,7 @@ These env variables are provided by firebase when you register an app.
 
 (**) To make the app work in your firebase, you have to add services used in the firebase project (authentification with email/password and with Google, firestore database, storage).
 
-The src/firebase/firebase.js does not exists in all commits (mostly at the beginning of the project), and if you want to run the app make sure it exists. If it doesn't, you have to add it from later commmits!
+The src/firebase/firebase.js does not exists in all commits (mostly at the beginning of the project), and if you want to run the app make sure it exists. If it doesn't, you have to add it from later commits!
 
 
 ## Optimisations
