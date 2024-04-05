@@ -8,6 +8,7 @@ import { Flex, Skeleton, SkeletonCircle, VStack } from '@chakra-ui/react'
 import useGetUserPosts from '../../hooks/useGetUserPosts'
 import useGetUserLikedPosts from '../../hooks/useGetUserLikedPosts'
 import useGetUserSavedPosts from '../../hooks/useGetUserSavedPosts'
+import useAuthStore from '../../store/authStore'
 
 
 const ProfilePage = () => {
@@ -17,6 +18,7 @@ const ProfilePage = () => {
     const { isGettingPosts, getPosts } = useGetUserPosts();
     const {gettingLikedPosts, getLikedPosts} = useGetUserLikedPosts();
     const {gettingSavedPosts, getSavedPosts} = useGetUserSavedPosts();
+    const authUser = useAuthStore(state=>state.user)
 
 
     const userNotFound = !isLoading && !userProfile
@@ -52,18 +54,23 @@ const ProfilePage = () => {
                     </div>
                     <span className="on-desktop">Posts</span>
                 </div>
-                <div className="tab saved-tav" onClick={handleShowSavedPosts}>
-                    <div className="profile-icon">
-                        <BsBookmark/>
-                    </div>
-                    <span className="on-desktop">Saved</span>
-                </div>
-                <div className="tab liked-tab" onClick={handleShowLikedPosts}>
-                    <div className="profile-icon">
-                        <BsSuitHeart/>
-                    </div>
-                    <span className="on-desktop">Likes</span>
-                </div>
+                {userProfile.uid === authUser.uid && (
+                    <>
+                        <div className="tab saved-tav" onClick={handleShowSavedPosts}>
+                            <div className="profile-icon">
+                                <BsBookmark/>
+                            </div>
+                        <span className="on-desktop">Saved</span>
+                        </div>
+                        <div className="tab liked-tab" onClick={handleShowLikedPosts}>
+                            <div className="profile-icon">
+                                <BsSuitHeart/>
+                            </div>
+                            <span className="on-desktop">Likes</span>
+                        </div>
+                    </>
+                )}
+
             </div>
 
             <ProfilePosts postsAreLoading={postsAreLoading}/>
