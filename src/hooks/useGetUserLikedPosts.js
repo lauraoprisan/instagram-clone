@@ -26,9 +26,7 @@ const useGetUserLikedPosts = () => {
                 posts.push({ ...doc.data(), id: doc.id });
             });
             console.log("posts here", posts)
-           //iterate through posts and change the likesInfo array so that it will only have the likesInfo obj with the user:authUser.uid
-
-            posts.sort((a,b) => b.createdAt - a.createdAt);
+  
             setPosts(posts);
         } catch (error) {
             showToast("Error", error.message, "error");

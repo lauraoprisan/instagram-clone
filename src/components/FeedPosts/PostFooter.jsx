@@ -15,7 +15,7 @@ const PostFooter = ({post,creatorProfile,isProfilePage}) => {
     const commentRef = useRef(null)
     const {handleLikePost, isLiked, likes} = useLikePost(post)
     const [isOpen, setIsOpen] = useState(false)
-    const {isSaved,isSaving,handleSavePost} = useSavePost(post)
+    const {isSaved,isUpdatingSave,handleSavePost} = useSavePost(post)
 
     const handleSubmitComment = async (e) => {
         e.preventDefault();

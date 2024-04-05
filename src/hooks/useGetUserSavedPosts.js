@@ -30,7 +30,6 @@ const useGetUserSavedPosts = () => {
                 posts.push({ ...doc.data(), id: doc.id });
             });
 
-            posts.sort((a, b) => b.createdAt - a.createdAt);
             setPosts(posts);
         } catch (error) {
             showToast("Error", error.message, "error");
