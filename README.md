@@ -18,11 +18,11 @@ Steps:
  - in the terminal:
     - navigate to the instagram-clone directory
     - npm i
-    - create the env file in the root directory, adding the env variables that permit connection to the firebase *
-    - configure your firebase app **
+    - create the env file in the root directory, adding the env variables that permit connection to the firebase (*)
+    - configure your firebase app (**)
     - npm run dev
 
-* The env files should include the following:
+(*) The env files should include the following:
 
     VITE_FIREBASE_API_KEY = <your_data> <br />
     VITE_FIREBASE_AUTH_DOMAIN = <your_data> <br />
@@ -35,7 +35,7 @@ Steps:
 
 These env variables are provided by firebase when you register an app.
 
-** To make the app work in your firebase, you have to add services used in the firebase project (authentification with email/password and with Google, firestore database, storage).
+(**) To make the app work in your firebase, you have to add services used in the firebase project (authentification with email/password and with Google, firestore database, storage).
 
 The src/firebase/firebase.js does not exists in all commits (mostly at the beginning of the project), and if you want to run the app make sure it exists. If it doesn't, you have to add it from later commmits!
 
